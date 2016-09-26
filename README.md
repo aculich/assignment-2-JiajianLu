@@ -15,15 +15,15 @@ First you will need to install NodeJS and NPM (Node Package Manager) in order to
  2. ```sudo apt-get install npm```
 2. Clone your webarch-assign-2 repository
 3. Go to terminal, cd into your new webarch-assign-2 repository and install all of your node modules by entering the following command:
- 1. ```npm install``
+ 1. ```npm install```
 4. You are all set! Now you can run your server by entering the following command
  1. ```nodejs app.js```
 5. And go to the url http://localhost:3000 on your browser (within your VM)
 
 ### Build a web server that serves the HTML pages you created in assignment 1
-You will be wiring up your blog that you have created in assignment 1 to be hosted in your web server. You will need to create routes (paths) that when a user goes to that path the appropriate page is returned. You will also need to use templates (through Mustache)
+You will be wiring up your blog that you have created in assignment 1 to be hosted in your web server. You will need to create routes that tell the server to return the HTML of the page that the user requested. You will need to use Mustache templates to render these pages.
 
-The following URL's should load the following pages:
+The following URLs should load the following pages:
 
 1. http://localhost:3000/index -> home page
 2. http://localhost:3000/about -> about us page
@@ -35,13 +35,13 @@ The following URL's should load the following pages:
 8. http://localhost:3000/blog/what-productivity-systems-wont-solve -> What Productivity Systems Won't Solve blog post
 
 ### Power your contact form to send a real email to yourself
-In this assignment you are going to enable the contact form that you created in assignment one and have it send you an actual email. You will do this by having your server send an HTTP POST request to an external API powered by [Mailgun](http://www.mailgun.com). 
+In this assignment you are going to enable the contact form that you created in assignment 1 and have it send you an actual email. You will do this by having your server send an HTTP POST request to an external API powered by [Mailgun](http://www.mailgun.com). 
 
 Here's the reference for the API and how to use it: [Mailgun API Referefence](https://documentation.mailgun.com/api-sending.html#sending).
 
-**Note: this must be implemented by using the [requests](https://www.npmjs.com/package/request) NodeJS module already included in this project. You are not allowed to find another module that integrates Mailgun with NodeJS**
+**Note: this must be implemented by using the [requests](https://www.npmjs.com/package/request) NodeJS module that is already included in this project. You are not allowed to find another module that integrates Mailgun with NodeJS**
 
-I will be sending a username and a password to to authenticate to an external api called Mailgun as an announcement on BCourses. I will also be sending some unix commands to run on your virtual machine to save to your environment. When you get that annoucement please run those commands in your terminal and then restart your terminal. This is to save the username and password for the API server that you will be contacting to send emails. This is a security measure since saving passwords in a repository is bad practice as that password will always be saved in that file's history
+I will be sending a script for you to run on your terminal. When you get that annoucement please run those commands in your terminal and then restart your terminal. This is to save the username and password for the API server that you will be contacting to send emails, as well as set the address where your contact form is sending emails. This is a security measure to avoid saving passwords in source control and to make it easy to change where contact emails are going to.
 
 Here are the requirements for the contact form:
 
@@ -54,7 +54,7 @@ Here are the requirements for the contact form:
 
 When moving HTML, CSS, and JavaScript to a web server, there may be issues with ensuring that all of those resources are being accessed properly
 
-1. Ensure that your webpage still looks the same as it did in assignment 1
+1. Ensure that your webpage still looks the same as it did in assignment 1 and that your Front End JavaScript is still functional
 
 ### Add a LEARNINGS.md file at the root of your repository answering the following questions:
 
@@ -72,7 +72,7 @@ When moving HTML, CSS, and JavaScript to a web server, there may be issues with 
 ### Add a README.md file at the root of your repository describing what your web server does
 
 1. Write a general overview on your blog
-2. List all of the possible GET and POST requests that your server returns a response for and describes what happens for each GET and POST requests
+2. List all of the possible GET and POST requests that your server returns a response for and describes what happens for each GET and POST request
 
 
 ## Extra Credit
