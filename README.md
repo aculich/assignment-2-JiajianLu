@@ -68,12 +68,7 @@ When moving HTML, CSS, and JavaScript to a web server, there may be issues with 
     7. GET and POST requests
  2. How does HTML, CSS, and JavaScript work together in the browser for this assignment?
  3. How does NodeJS and JavaScript work together in the server for this assignment?
- 
-### Add a README.md file at the root of your repository describing what your web server does
-
-1. Write a general overview on your blog
-2. List all of the possible GET and POST requests that your server returns a response for and describes what happens for each GET and POST request
-
+ 4. List all of the possible GET and POST requests that your server returns a response for and describes what happens for each GET and POST request
 
 ## Extra Credit
 1. Add an email field to your contact form and add that information along with your name/subject/message
