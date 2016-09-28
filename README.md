@@ -49,6 +49,7 @@ Here are the requirements for the contact form:
  1. Name
  2. Subject
  3. Message
+2. Your contact form should send a POST request to the server
 
 ### Ensure that your CSS, JavaScript, and images are loading correctly
 
