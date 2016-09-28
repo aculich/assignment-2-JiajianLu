@@ -41,7 +41,7 @@ Here's the reference for the API and how to use it: [Mailgun API Referefence](ht
 
 **Note: this must be implemented by using the [requests](https://www.npmjs.com/package/request) NodeJS module that is already included in this project. You are not allowed to find another module that integrates Mailgun with NodeJS**
 
-I will be sending a script for you to run on your terminal. When you get that annoucement please run those commands in your terminal and then restart your terminal. This is to save the username and password for the API server that you will be contacting to send emails, as well as set the address where your contact form is sending emails. This is a security measure to avoid saving passwords in source control and to make it easy to change where contact emails are going to.
+I will be sending a script for you to run on your terminal. When you get that announcement please run those commands in your terminal and then restart your terminal. This is to save the username and password for the API server that you will be contacting to send emails, as well as set the address where your contact form is sending emails. This is a security measure to avoid saving passwords in source control and to make it easy to change where contact emails are going to.
 
 Here are the requirements for the contact form:
 
@@ -49,7 +49,9 @@ Here are the requirements for the contact form:
  1. Name
  2. Subject
  3. Message
-2. Your contact form should send a POST request to the server
+2. Your contact form should still run the same JavaScript validations that you did in assignment 1. It should not send a request the server unless all fields are filled out.
+3. Your contact form should send a POST request to the server (not a GET request)
+3. Your contact form should display the name of the person filling out the contact form on successful submission of the form. For example, after someone successfully submits the contact form named Kate, the message should say "Hi Kate, your message has been sent".
 
 ### Ensure that your CSS, JavaScript, and images are loading correctly
 
