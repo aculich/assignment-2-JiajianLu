@@ -83,7 +83,7 @@ is already included in this project. You are not allowed to find another module 
 **Note:** your integration with Mailgun needs to be externally configruable. This means that you cannot add your username,
 password, nor recipient directly into the code. It is a security risk to check in passwords directly into code. You must use environment variables in order to achieve this result. 
 
-####Here are the requirements for the contact form:
+### Here are the requirements for the contact form:
 
 Your contact form should send an email to your own email with the following information:
 1. Name
