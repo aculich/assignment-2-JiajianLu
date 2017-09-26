@@ -1,76 +1,120 @@
 # Assignment 2
 ## Make your static website dynamic
 
-Our assignments are going to be built around building a blog from the ground up and eventually hosting your blog in the cloud. For this second assignment, you are going to take the static blog that you have created and host it on a server that you will set up, build, and code yourself. At the end of this assignment you will have turned your Virtual Machine into a web server that is hosting your very own site!
+Our assignments are going to be built around building a blog from the ground up and eventually hosting your blog in the 
+cloud. For this second assignment, you are going to take the static blog that you have created and host it on a server 
+that you will set up, build, and code yourself. At the end of this assignment you will have used your vagrant box to 
+power a web server that is hosting your very own site!
 
-You will be using [NodeJS](https://nodejs.org/en/docs/), [Express](https://expressjs.com/en/4x/api.html), and [Mustache](https://mustache.github.io/mustache.5.html) to accomplish this.
+You will be using [Flask](http://flask.pocoo.org/)
 
 You will need to do the following:
 
-### Install and run your web server
-First you will need to install NodeJS and NPM (Node Package Manager) in order to install packages. Next you will need to clone this repository and install all of the dependencies that are reqiured for your application to run.
+### Install Python 3 to your vagrant box (if you haven't alreaady)
 
-1. To install node please do the following in your VM's terminal
- 1. ```sudo apt-get install nodejs```
- 2. ```sudo apt-get install npm```
-2. Clone your webarch-assign-2 repository
-3. Go to terminal, cd into your new webarch-assign-2 repository and install all of your node modules by entering the following command:
- 1. ```npm install```
-4. You are all set! Now you can run your server by entering the following command
- 1. ```nodejs app.js```
-5. And go to the url http://localhost:3000 on your browser (within your VM)
+1. Download miniconda for Linux. Download the right Linux installer (32 bit or 64 bit, depending on your system) and 
+save that file in the i253 folder
+2. Load up your vagrant box and run the 
+ - ```bash Miniconda3-latest-Linux-x86_64.sh``` for 64 bit
+ - ```bash Miniconda3-latest-Linux-x86.sh``` for 32 
+3. Be sure to type "yes" when asked this question;
+ - Do you wish the installer to prepend the Miniconda3 install location to PATH in your /home/vagrant/.bashrc ? [yes|no]
+
+Now you should be able to type python3 --version and it should specify that you are running python 3.6
+
+### Forward ports from your vagrant box so that you can use your webserver outside your vagrant box (if you haven't already)
+
+1. Open the file "Vagrantfile" located in your i253 folder with a text editor
+2. At the second line from the end (before the word "end") add the following code:
+ - ``` 
+    for i in 5000..5010
+        config.vm.network :forwarded_port, guest: i, host: i
+    end
+    ```
+3. Now ports 5000 through 5010 are availiable on your host computer by going to your browser and going to
+http://localhost:5000, http://localhost:5001, and so on to http://localhost:5010
+
+### Clone your repo and run your server
+
+1. Clone your webarch-assign-2 repository inside your vagrant box under /vagrant
+2. Run ```cd webarch-assign-2```
+3. Install all of your requirements by running the command: ```pip install -r requirements.txt ```
+4. Tell your vagrant box where the code to your flask application lives by running the command ```export FLASK_APP=webserver.py```
+5. Run your application by running the command ```flask run --host=0.0.0.0```
+
+You would see your terminal look something like this:
+
+```
+vagrant@precise64:/vagrant/webarch-assign-2$ flask run --host=0.0.0.0
+ * Serving Flask app "webserver"
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+10.0.2.2 - - [26/Sep/2017 20:52:10] "GET / HTTP/1.1" 200 -
+```
 
 ### Build a web server that serves the HTML pages you created in assignment 1
-You will be wiring up your blog that you have created in assignment 1 to be hosted in your web server. You will need to create routes that tell the server to return the HTML of the page that the user requested. You will need to use Mustache templates to render these pages.
+You will be wiring up your blog that you have created in assignment 1 to be hosted in your web server. You will need to 
+create routes that tell the server to return the HTML of the page that the user requested. You will need to use the 
+[templates feature](http://flask.pocoo.org/docs/0.12/templating/) of Flask to power these pages.
 
 The following URLs should load the following pages:
 
-1. http://localhost:3000/index -> home page
-2. http://localhost:3000/about -> about us page
-3. http://localhost:3000/contact -> contact us page
-4. http://localhost:3000/blog/8-experiments-in-motivation -> 8 experiments in motivation blog post
-5. http://localhost:3000/blog/a-mindful-shift-of-focus -> A Mindful Shift of Focus blog post
-6. http://localhost:3000/blog/how-to-develop-an-awesome-sense-of-direction -> How to Develop an Awesome Sense of Direction blog post
-7. http://localhost:3000/blog/training-to-be-a-good-writer -> Training to Be a Good Writer blog post
-8. http://localhost:3000/blog/what-productivity-systems-wont-solve -> What Productivity Systems Won't Solve blog post
+1. http://localhost:5000/index -> home page
+2. http://localhost:5000/about -> about us page
+3. http://localhost:5000/contact -> contact us page
+4. http://localhost:5000/blog/8-experiments-in-motivation -> 8 experiments in motivation blog post
+5. http://localhost:5000/blog/a-mindful-shift-of-focus -> A Mindful Shift of Focus blog post
+6. http://localhost:5000/blog/how-to-develop-an-awesome-sense-of-direction -> How to Develop an Awesome Sense of 
+Direction blog post
+7. http://localhost:5000/blog/training-to-be-a-good-writer -> Training to Be a Good Writer blog post
+8. http://localhost:5000/blog/what-productivity-systems-wont-solve -> What Productivity Systems Won't Solve blog post
 
 ### Power your contact form to send a real email to yourself
-In this assignment you are going to enable the contact form that you created in assignment 1 and have it send you an actual email. You will do this by having your server send an HTTP POST request to an external API powered by [Mailgun](http://www.mailgun.com). 
+In this assignment you are going to enable the contact form that you created in assignment 1 and have it send you an 
+actual email. You will do this by having your server send an HTTP POST request to an external API powered by 
+[Mailgun](http://www.mailgun.com). 
 
-Here's the reference for the API and how to use it: [Mailgun API Referefence](https://documentation.mailgun.com/api-sending.html#sending).
+You will have to create a free account at [Mailgun](https://signup.mailgun.com/new/signup) and check the documentation 
+to determine how you can send a POST request to Mailgun in order to send an email. Here's the reference for the API and 
+how to use it: [Mailgun API Referefence](https://documentation.mailgun.com/api-sending.html#sending).
 
-**Note: this must be implemented by using the [requests](https://www.npmjs.com/package/request) NodeJS module that is already included in this project. You are not allowed to find another module that integrates Mailgun with NodeJS**
+**Note:** this must be implemented by using the [requests](http://docs.python-requests.org/en/master/) Python module that 
+is already included in this project. You are not allowed to find another module that integrates Mailgun with Flask
 
-I will be sending a script for you to run on your terminal. When you get that announcement please run those commands in your terminal and then restart your terminal. This is to save the username and password for the API server that you will be contacting to send emails, as well as set the address where your contact form is sending emails. This is a security measure to avoid saving passwords in source control and to make it easy to change where contact emails are going to.
+**Note:** your integration with Mailgun needs to be externally configruable. This means that you cannot add your username,
+password, nor recipient directly into the code. It is a security risk to check in passwords directly into code. You must use environment variables in order to achieve this result. 
 
-Here are the requirements for the contact form:
+####Here are the requirements for the contact form:
 
-1. Your contact form should send an email to your own email with the following information:
- 1. Name
- 2. Subject
- 3. Message
-2. Your contact form should still run the same JavaScript validations that you did in assignment 1. It should not send a request the server unless all fields are filled out.
-3. Your contact form should send a POST request to the server (not a GET request)
-3. Your contact form should display the name of the person filling out the contact form on successful submission of the form. For example, after someone successfully submits the contact form named Kate, the message should say "Hi Kate, your message has been sent".
+Your contact form should send an email to your own email with the following information:
+1. Name
+2. Subject
+4. Message
+5. Your contact form should still run the same JavaScript validations that you did in assignment 1. It should not send 
+6 request the server unless all fields are filled out.
+7. Your contact form should send a POST request to the server (not a GET request)
+8. Your contact form should display the name of the person filling out the contact form on successful submission of the 
+form. For example, after someone successfully submits the contact form named Kate, the message should say "Hi Kate, your 
+message has been sent".
 
 ### Ensure that your CSS, JavaScript, and images are loading correctly
 
-When moving HTML, CSS, and JavaScript to a web server, there may be issues with ensuring that all of those resources are being accessed properly
+When moving HTML, CSS, and JavaScript to a web server, there may be issues with ensuring that all of those resources are 
+being accessed properly
 
-1. Ensure that your webpage still looks the same as it did in assignment 1 and that your Front End JavaScript is still functional
+1. Ensure that your web page still looks the same as it did in assignment 1 and that your JavaScript is still functional
 
 ### Add a LEARNINGS.md file at the root of your repository answering the following questions:
 
  1. What is the function of the following technologies in your assignment:
     1. HTML
     2. CSS
-    3. JavaScript (in the browser)
-    4. NodeJS/Express
-    5. JavaScript (on the server)
+    3. JavaScript
+    4. Python
+    5. Flask
     6. HTTP
     7. GET and POST requests
  2. How does HTML, CSS, and JavaScript work together in the browser for this assignment?
- 3. How does NodeJS and JavaScript work together in the server for this assignment?
+ 3. How does Python and Flask work together in the server for this assignment?
  4. List all of the possible GET and POST requests that your server returns a response for and describes what happens for each GET and POST request
 
 ## Extra Credit
