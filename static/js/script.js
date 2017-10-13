@@ -3,7 +3,7 @@ request.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         var r = JSON.parse(this.responseText);
         document.getElementById('city').innerHTML = r.name;
-        document.getElementById('temp').innerHTML = r.main.temp +"<sup>°</sup>";
+        document.getElementById('temp').innerHTML = r.main.temp +"°";
         //console.log();
         document.getElementById('clouds').innerHTML = r.weather[0].description;
         var winddir = r.wind.deg;
