@@ -1,0 +1,41 @@
+.nameplace{
+	text-align: left;
+	border-bottom-width: 2px;
+	border-bottom: dotted 1px;
+	border-bottom-color: grey;
+	background-color:#F7F8FA;
+	background-size: 30px 20px;
+	font-family: Arial;
+	margin: 0;
+	padding: 10px;
+}
+input[type ="text"]{
+  height: 38px;
+  padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
+  background-color: #fff;
+  border: 1px solid #D1D1D1;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box; }
+ textarea{
+ 	vertical-align: top;
+ }
+  input[type="submit"] {
+  display: inline-block;
+  height: 38px;
+  padding: 0 30px;
+  color: #555;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  cursor: pointer;
+  box-sizing: border-box; 
+}

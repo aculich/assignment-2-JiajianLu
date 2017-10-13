@@ -1,0 +1,32 @@
+footer a{
+	color: #275FA1;
+	text-decoration: none;
+}
+footer a:hover
+{
+	color: #275FA1;
+	text-decoration: underline;
+}
+
+footer a+a{
+	margin-left: 50px;
+}
+
+.footer1 {
+	text-align: center;
+	background: #EAEBEE;
+    font-family: Arial;
+    position: absolute;
+    font-size: 20px;
+  	right: 0;
+  	bottom: 0;
+  	left: 0;
+    padding: 0.2em;
+}
+.footer2 {
+	text-align: center;
+	background: #EAEBEE;
+    font-family: Arial;
+    font-size: 15px;
+    padding: 0.2em;
+}

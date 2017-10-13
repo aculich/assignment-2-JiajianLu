@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" type="text/css" href="static/css/footer.css">
+<link rel="stylesheet" type="text/css" href="static/css/header.css">
+<link rel="stylesheet" type="text/css" href="static/css/showmessage.css">
+<link rel="stylesheet" type="text/css" href="static/css/form.css">
+<link rel="stylesheet" type="text/css" href="static/css/textinform.css">
+	<title>
+		Contact Us
+	</title>
+</head>
+<body>
+
+<p id="nameerror"></p>
+<p id="subjecterror"></p>
+<p id="emailerror"></p>
+<p id="messageerror"></p>
+<p id="success">{{notif}}</p>
+<header id = "start">
+<p>
+  <a href="index">Homepage</a>
+    <a href="contact">Contact Us</a>
+    <a href="about">About Us</a>
+</p>
+</header>
+<form action="/contact" method="POST">
+  <p>
+  <label for="name">Name</label>
+  <input id = "name" type="text" name="name">
+</p>
+  <p>
+  <label for="subject">Subject</label>
+  <input id = "subject" type="text" name="subject">
+</p>
+  <p>
+  <label for="email">Email</label>
+  <input id = "email" type="text" name="email">
+  </p>
+  <p ><label class="label" for="message">Message</label>
+  <textarea id = "message" name="message" cols="50" rows="9">Write down your message here.</textarea></p>
+  <p><input type="submit"  value="Submit" onclick="setLocalStorage()" /></p>
+</form>
+<footer class="footer1">
+ <p>
+  <a href="index">Homepage</a>
+    <a href="contact">Contact Us</a>
+    <a href="about">About Us</a>
+</p>
+</footer>
+<script type="text/javascript" src="static/js/Contactus.js"></script>
+</body>
+</html>
