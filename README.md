@@ -20,9 +20,16 @@ Open [Google Cloud Shell](https://cloud.google.com/shell/docs/) and then run thr
 
 ### Clone your repo and run your server
 
-1. Clone your webarch-assign-2 repository inside your vagrant box under /vagrant
+Before you run the instructions below you will need to do this once to modify your PATH:
+
+```
+echo 'export PATH=$HOME/.local/bin:$PATH' >> ~/.bashrc
+```
+
+
+1. Clone your webarch-assign-2 repository inside your google cloud shell home directory
 2. Run ```cd webarch-assign-2```
-3. Install all of your requirements by running the command: ```pip install -r requirements.txt --user ```
+3. Install all of your requirements by running the command: ```pip install -r requirements.txt --user```
 4. Tell your vagrant box where the code to your flask application lives by running the command ```export FLASK_APP=webserver.py```
 5. Run your application by running the command ```flask run --host=0.0.0.0 --port=8080```
 6. Open using Web Preview on Port 8080 in GCS
