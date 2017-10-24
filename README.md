@@ -10,45 +10,29 @@ You will be using [Flask](http://flask.pocoo.org/)
 
 You will need to do the following:
 
-### Install Python 3 to your vagrant box (if you haven't alreaady)
+### To run on Google Cloud Platform
 
-1. Download miniconda for Linux. Download the right Linux installer (32 bit or 64 bit, depending on your system) and 
-save that file in the i253 folder
-2. Load up your vagrant box and run the 
- - ```bash Miniconda3-latest-Linux-x86_64.sh``` for 64 bit
- - ```bash Miniconda3-latest-Linux-x86.sh``` for 32 
-3. Be sure to type "yes" when asked this question;
- - Do you wish the installer to prepend the Miniconda3 install location to PATH in your /home/vagrant/.bashrc ? [yes|no]
+Using your @berkeley.edu account go to: https://console.cloud.google.com/
 
-Now you should be able to type python3 --version and it should specify that you are running python 3.6
+Activate your free $300 in credits (note, this will require a credit card to activate, however you will NOT be charged by Google even after your free credits run out).
 
-### Forward ports from your vagrant box so that you can use your webserver outside your vagrant box (if you haven't already)
-
-1. Open the file "Vagrantfile" located in your i253 folder with a text editor
-2. At the second line from the end (before the word "end") add the following code:
- - ``` 
-    for i in 5000..5010
-        config.vm.network :forwarded_port, guest: i, host: i
-    end
-    ```
-3. Now ports 5000 through 5010 are availiable on your host computer by going to your browser and going to
-http://localhost:5000, http://localhost:5001, and so on to http://localhost:5010
+Open [Google Cloud Shell](https://cloud.google.com/shell/docs/) and then run through the directions below (note the instructions have been changed slightly for use in the GCS environment rather than Vagrant):
 
 ### Clone your repo and run your server
 
 1. Clone your webarch-assign-2 repository inside your vagrant box under /vagrant
 2. Run ```cd webarch-assign-2```
-3. Install all of your requirements by running the command: ```pip install -r requirements.txt ```
+3. Install all of your requirements by running the command: ```pip install -r requirements.txt --user ```
 4. Tell your vagrant box where the code to your flask application lives by running the command ```export FLASK_APP=webserver.py```
-5. Run your application by running the command ```flask run --host=0.0.0.0```
+5. Run your application by running the command ```flask run --host=0.0.0.0 --port=8080```
+6. Open using Web Preview on Port 8080 in GCS
 
 You would see your terminal look something like this:
 
 ```
-vagrant@precise64:/vagrant/webarch-assign-2$ flask run --host=0.0.0.0
+aculich@cloud-demo-143206:~/assignment-2-JiajianLu$ flask run --host=0.0.0.0 --port=8080
  * Serving Flask app "webserver"
- * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
-10.0.2.2 - - [26/Sep/2017 20:52:10] "GET / HTTP/1.1" 200 -
+ * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
 ```
 
 ### Build a web server that serves the HTML pages you created in assignment 1
